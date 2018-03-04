@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.app.auth.model.Contact;
-import com.app.auth.model.ContactGroup;
-import com.app.auth.service.ContactGroupService;
-import com.app.auth.service.ContactService;
-import com.app.auth.service.MailService;
+import com.app.model.Broadcast;
+import com.app.model.Contact;
+import com.app.model.ContactGroup;
+import com.app.service.ContactGroupService;
+import com.app.service.ContactService;
+import com.app.service.MailService;
 
 @Controller
 public class MainWebController {
 
 	@Autowired
 	private ContactService contactService;
-	private MailService mailService = new MailService();
 
 	@Autowired
 	private ContactGroupService groupService; 
@@ -38,22 +38,21 @@ public class MainWebController {
 	@RequestMapping(method=RequestMethod.POST, value="/groups")
 	public String addGroup(Model model, ContactGroup group) {
 		groupService.save(group);
-		return "redirect:/contacts";
+		return "groups";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/groups")
+	public String groupView(Model model) {
+		return "groups";
 	}
 
 	@RequestMapping(method=RequestMethod.GET, value="/compose")
 	public String compose(Model model) {
 		return "compose";
 	}
-
-	@RequestMapping(method=RequestMethod.POST, value="/compose")
-	public String broadcast(Model mode, @RequestBody String content) {//, @RequestBody String groupName) {
-		mailService.broadcast(content);//(groupName, content);
-		return "compose";
-	}
 	
 	@RequestMapping(value = {"/", "/home"})
 	public String home(Model model) {
-		return "home";
+		return "redirect:/contacts";
 	}
 }

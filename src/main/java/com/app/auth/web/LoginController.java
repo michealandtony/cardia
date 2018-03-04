@@ -1,9 +1,9 @@
 package com.app.auth.web;
 
-import com.app.auth.model.User;
-import com.app.auth.service.SecurityService;
-import com.app.auth.service.UserService;
-import com.app.auth.validator.UserValidator;
+import com.app.model.User;
+import com.app.service.SecurityService;
+import com.app.service.UserService;
+import com.app.validator.UserValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

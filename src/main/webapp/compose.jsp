@@ -1,179 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<!doctype html>
+<html><head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Yak BMS</title>
+    <title>Cardia - Compose</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Bootstrap -->
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- DATA TABLE CSS -->
+    <link href="/resources/css/table.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    
   </head>
   <body>
   
+  	<!-- NAVIGATION MENU -->
 
-<div class="">
-  <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand"><big><b>Cardia</b></big></a>
-      </div>
-      <div id="navbar3" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/contacts">Contacts</a></li>
-          <li><a href="/compose">Compose</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-    <!--/.container-fluid -->
-  </nav>
-</div>
+    <div class="navbar-nav navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"><img src="/resources/img/logo30.png" alt=""> Cardia</a>
+        </div> 
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/groups"><i class="icon-folder-open icon-white"></i> Groups</a></li>
+              <li><a href="/contacts"><i class="icon-home icon-white"></i> Contacts</a></li>
+              <li><a href="/compose"><i class="icon-calendar icon-white"></i> Compose</a></li>
 
-<style>
-.src-image {
-  display: none;
-}
-
-.card {
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #CCC;
-  border-radius: 8px;
-  text-align: center;
-  padding: 0;
-  background-color: #284c79;
-  color: rgb(136, 172, 217);
-}
-
-.card .header-bg {
-  /* This stretches the canvas across the entire hero unit */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  border-bottom: 1px #FFF solid;
-  /* This positions the canvas under the text */
-  z-index: 1;
-}
-.card .avatar {
-  position: relative;
-  margin-top: 15px;
-  z-index: 100;
-}
-
-.card .avatar img {
-  width: 100px;
-  height: 100px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  border: 5px solid rgba(0,0,30,0.8);
-}
-</style>
-
-        
-
-
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="col-lg-3">
-            <div class="card">
-                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-                <div class="avatar">
-                    <img src="img/1.jpg" alt="" />
-                </div>
-                <div class="content">
-                    <p>Web Developer <br>
-                       More description here</p>
-                    <p><button type="button" class="btn btn-default">Contact</button></p>
-                </div>
-            </div>
-	<div class="panel-group col-sm-12" style="padding-top:50px">
-	  <div class="panel panel-default">
-	    <div class="panel-heading"><center>Statistics</center>
-	    </div>
-	    <div class="panel-body">Balance : 5000frs<br>Recipients : 50<br>Cost : 1000frs
-	    </div>
-	  </div>
-	</div>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
     </div>
-    <div class="col-lg-9">
-      	<div class="panel-group col-sm-12">
-	  <div class="panel panel-default">
-	    <div class="panel-body">
+
+    <div class="container">
+
+      <!-- CONTENT -->
+	<div class="row">
+		<div class="col-sm-12 col-lg-12">
+			<h4><strong>Compose </strong></h4>
+			  <div class="row">
+ 	  		<!-- FAST CONTACT BLOCK -->     
+			<div class="col-sm-12">
+				<div class="dash-unit" style="height:100%">
+	      		<dtitle> </dtitle>
+	      		<hr>
+	      		<div class="cont">
+	      			<form action="/broadcast?${_csrf.parameterName}=${_csrf.token}" method="POST">
+						<div class="form-group">
+							<select class="form-control" id="group-select" name="groupName">
+							    <option>Select Group</option>
+							</select>
+						</div>
+		                <div class="textarea-container">
+		                	<textarea name="message" placeholder="Message" style="height:400px"></textarea>
+	                	</div>
+	                    	<input type="submit" name="submit" value="Send">
+                    </form>
+				</div>
+				</div>
+			</div>
+
+		</div>
+			 <br>
+			 <!--SECOND Table -->
+		</div><!--/span12 -->
+      </div><!-- /row -->
+     </div> <!-- /container -->
+    
 
 
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/admin.js"></script>
 
 
-<div class="col-lg-12">
-<div class="input-group col-sm-12"><label class="aria-label">Send To Single Recipient : </label>
-  <input type="text" class="form-control" placeholder="Recipient's Phone Number" aria-describedby="basic-addon2">
-</div><br>
-</div>
-
-<div class="col-lg-12">
-<div class="input-group col-sm-12"><label>Send To Group : </label>
-
-      <div class="input-group-btn pull-left" style="position:relative;left:150px">
-        <select class="btn btn-default" aria-haspopup="true" aria-expanded="false">... <span class="caret"></span>
-        <ul class="dropdown-menu">
-          <option><a href="#">...</a></option>
-          <option><a href="#">Group 1</a></option>
-          <option><a href="#">Group 2</a></option>
-          <option><a href="#">Group 3</a></option>
-        </ul>
-</select>
-      </div><!-- /btn-group -->
-</div>
-</div>
-
-
-	    </div>
-	  
-	    <div class="panel-body">
-
-
-
-<div class="input-group col-sm-12">
-  <textarea class="form-control" style="width:100%;height:400px" placeholder="Message content..." aria-describedby="basic-addon2"> </textarea>
-</div>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon2">SEND</span>
-</div>
-
-
-
-	   </div>
-	  </div>
-	</div>
-    </div>
-  </div>
-</div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+<script >
+    
+    function getGroups() {
+    	console.log ("getting groups...");
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://localhost:8080/api/groups";
+        xmlhttp.open('GET',url,true);
+        xmlhttp.send(null);
+        
+        xmlhttp.onreadystatechange = function() {
+               if (xmlhttp.readyState == 4) {
+                  if ( xmlhttp.status == 200) {
+                       var response = eval( "(" +  xmlhttp.responseText + ")");
+                       for (var index in response){
+                    	   var name = response[index].name;
+                    	   document.getElementById("group-select").innerHTML += "<option onclick=\"showList(\""+name+"\")\" value=\""+name+"\">"+name+"</option>";
+                       }
+                 }
+                 else
+                       alert("Error ->" + xmlhttp.responseText);
+              }
+        };
+    }
+    
+    getGroups();
+  </script>
+  
+</body></html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html><head>
     <meta charset="utf-8">
-    <title>Cardia - Contacts</title>
+    <title>Cardia - Contact Groups</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,18 +59,15 @@
       <!-- CONTENT -->
 	<div class="row">
 		<div class="col-sm-8">
-			<h4><strong>Contacts List</strong></h4>
+			<h4><strong>Contact Groups</strong></h4>
 			  <table class="display">
 	          <thead>
 	            <tr>
-	              <th>Id</th>
-	              <th>Contact Name</th>
-	              <th>Phone Number</th>
-	              <th>Email</th>
-	              <th>Group</th>
+	              <th>Group Name</th>
+	              <th>Description</th>
 	            </tr>
 	          </thead>
-	          <tbody id="contacts-table">
+	          <tbody id="contact-group">
 	          </tbody>
 	         </table><!--/END First Table -->
 			 <br>
@@ -79,18 +76,12 @@
 		
 			<div class="col-sm-4">
 				<div class="dash-unit">
-	      		<dtitle>New Contact</dtitle>
+	      		<dtitle>New Group</dtitle>
 	      		<hr>
 	      		<div class="cont">
-                	<form action="/contacts?${_csrf.parameterName}=${_csrf.token}" method="POST" id="contact">
+                	<form action="/groups?${_csrf.parameterName}=${_csrf.token}" method="POST" >
                     	<input type="text" name="name" placeholder="Name">
-                    	<input type="text" name="email" placeholder="Email">
-                    	<input type="text" name="phoneNumber" placeholder="Phone Number">
-                    	<div class="form-group">
-						 <select class="form-control" id="group-select" name="groupName">
-						    <option>Select Group</option>
-						  </select>
-						</div>
+                    	<input type="text" name="description" placeholder="Group Description">
 						<input type="submit" id="submit" name="submit" value="Submit">
                     </form>
 				</div>
@@ -99,7 +90,6 @@
       </div><!-- /row -->
      </div> <!-- /container -->
     
-    
 
 
     <!-- Le javascript
@@ -107,7 +97,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="assets/js/admin.js"></script>
-    
+
 
 <script >
     
@@ -122,35 +112,8 @@
                if (xmlhttp.readyState == 4) {
                   if ( xmlhttp.status == 200) {
                        var response = eval( "(" +  xmlhttp.responseText + ")");
-                       for (var index in response){
-                    	   var name = response[index].name;
-                    	   document.getElementById("group-select").innerHTML += "<option onclick=\"showList(\""+name+"\")\" value=\""+name+"\">"+name+"</option>";
-                	   	   
-                       }
-                 }
-                 else
-                       alert("Error ->" + xmlhttp.responseText);
-              }
-        };
-    }
-    
-    getGroups();
-  </script>    
-    
-   <script >
-    var xmlhttp = new XMLHttpRequest();
-    
-    function getdetails() {
-        var url = "http://localhost:8080/api/contacts";
-        xmlhttp.open('GET',url,true);
-        xmlhttp.send(null);
-        
-        xmlhttp.onreadystatechange = function() {
-               if (xmlhttp.readyState == 4) {
-                  if ( xmlhttp.status == 200) {
-                       var response = eval( "(" +  xmlhttp.responseText + ")");
-                       var state = 1;
                        var table = "";
+                       var state = 1;
                        for (var index in response){
                     	   table += "<tr ";
                     	   if (state == 1){
@@ -161,15 +124,13 @@
                     		   table += "class=\"even\"";
                     		   state = 1;
                     	   }
-
-                		   table += ">"+
-                    	   "<td>"+response[index].id+"</td>"+
-                    	   "<td>"+response[index].name+"</td>"+
-                    	   "<td>"+response[index].phoneNumber+"</td>"+
-                    	   "<td>"+response[index].email+"</td>"+
-                    	   "<td>"+response[index].groupName+"</tr>\n";
                     	   
-                		   document.getElementById("contacts-table").innerHTML = table;
+                    	   table += ">"+
+                    	   "<td>"+response[index].name+"</td>"+
+                    	   "<td>"+response[index].description+"</td>"+
+                    	   "</tr>";
+                    	   
+                    	    document.getElementById("contact-group").innerHTML = table;
                        }
                  }
                  else
@@ -178,9 +139,7 @@
         };
     }
     
-    getdetails();
+    getGroups();
   </script>
-    
-
   
 </body></html>

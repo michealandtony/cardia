@@ -1,7 +1,7 @@
 <!doctype html>
 <html><head>
     <meta charset="utf-8">
-    <title>Cardia - Contacts</title>
+    <title>BLOCKS - Bootstrap Dashboard Theme</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -26,6 +26,14 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+  	<!-- DataTables Initialization -->
+    <script type="text/javascript" src="assets/js/datatables/jquery.dataTables.js"></script>
+  			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#dt1').dataTable();
+			} );
+	</script>
 
     
   </head>
@@ -63,14 +71,43 @@
 			  <table class="display">
 	          <thead>
 	            <tr>
-	              <th>Id</th>
 	              <th>Contact Name</th>
 	              <th>Phone Number</th>
 	              <th>Email</th>
 	              <th>Group</th>
 	            </tr>
 	          </thead>
-	          <tbody id="contacts-table">
+	          <tbody>
+	            <tr class="odd">
+	              <td>Queen</td>
+	              <td>Brian May</td>
+	              <td>Guitar</td>
+	              <td class="center"> 7</td>
+	            </tr>
+	            <tr class="even">
+	              <td>Queen</td>
+	              <td>Roger Taylor</td>
+	              <td>Drums</td>
+	              <td class="center">5</td>
+	            </tr>
+	            <tr class="odd">
+	              <td>Beatles</td>
+	              <td>Paul McCartney</td>
+	              <td>Guitar &amp; Piano</td>
+	              <td class="center">8</td>
+	            </tr>
+	            <tr class="even">
+	              <td>Adele</td>
+	              <td>Adele</td>
+	              <td>None</td>
+	              <td class="center">8</td>
+	            </tr>
+	            <tr class="odd">
+	              <td>Britney Spears</td>
+	              <td>Britney Spears</td>
+	              <td>None</td>
+	              <td class="center">7</td>
+	            </tr>
 	          </tbody>
 	         </table><!--/END First Table -->
 			 <br>
@@ -82,13 +119,16 @@
 	      		<dtitle>New Contact</dtitle>
 	      		<hr>
 	      		<div class="cont">
-                	<form action="/contacts?${_csrf.parameterName}=${_csrf.token}" method="POST" id="contact">
-                    	<input type="text" name="name" placeholder="Name">
-                    	<input type="text" name="email" placeholder="Email">
-                    	<input type="text" name="phoneNumber" placeholder="Phone Number">
+                	<form action="#get-in-touch" method="POST" id="contact">
+                    	<input type="text" id="contactname" name="contactname" placeholder="Name">
+                    	<input type="text" id="email" name="email" placeholder="Email">
+                    	<input type="text" id="email" name="email" placeholder="Phone Number">
                     	<div class="form-group">
-						 <select class="form-control" id="group-select" name="groupName">
+						 <select class="form-control" id="sel1">
 						    <option>Select Group</option>
+						    <option>2</option>
+						    <option>3</option>
+						    <option>4</option>
 						  </select>
 						</div>
 						<input type="submit" id="submit" name="submit" value="Submit">
@@ -99,7 +139,6 @@
       </div><!-- /row -->
      </div> <!-- /container -->
     
-    
 
 
     <!-- Le javascript
@@ -107,80 +146,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="assets/js/admin.js"></script>
-    
-
-<script >
-    
-    function getGroups() {
-    	console.log ("getting groups...");
-        var xmlhttp = new XMLHttpRequest();
-        var url = "http://localhost:8080/api/groups";
-        xmlhttp.open('GET',url,true);
-        xmlhttp.send(null);
-        
-        xmlhttp.onreadystatechange = function() {
-               if (xmlhttp.readyState == 4) {
-                  if ( xmlhttp.status == 200) {
-                       var response = eval( "(" +  xmlhttp.responseText + ")");
-                       for (var index in response){
-                    	   var name = response[index].name;
-                    	   document.getElementById("group-select").innerHTML += "<option onclick=\"showList(\""+name+"\")\" value=\""+name+"\">"+name+"</option>";
-                	   	   
-                       }
-                 }
-                 else
-                       alert("Error ->" + xmlhttp.responseText);
-              }
-        };
-    }
-    
-    getGroups();
-  </script>    
-    
-   <script >
-    var xmlhttp = new XMLHttpRequest();
-    
-    function getdetails() {
-        var url = "http://localhost:8080/api/contacts";
-        xmlhttp.open('GET',url,true);
-        xmlhttp.send(null);
-        
-        xmlhttp.onreadystatechange = function() {
-               if (xmlhttp.readyState == 4) {
-                  if ( xmlhttp.status == 200) {
-                       var response = eval( "(" +  xmlhttp.responseText + ")");
-                       var state = 1;
-                       var table = "";
-                       for (var index in response){
-                    	   table += "<tr ";
-                    	   if (state == 1){
-                    		   table += "class=\"odd\"";
-                    		   state = 0;
-                    	   }
-                    	   else {
-                    		   table += "class=\"even\"";
-                    		   state = 1;
-                    	   }
-
-                		   table += ">"+
-                    	   "<td>"+response[index].id+"</td>"+
-                    	   "<td>"+response[index].name+"</td>"+
-                    	   "<td>"+response[index].phoneNumber+"</td>"+
-                    	   "<td>"+response[index].email+"</td>"+
-                    	   "<td>"+response[index].groupName+"</tr>\n";
-                    	   
-                		   document.getElementById("contacts-table").innerHTML = table;
-                       }
-                 }
-                 else
-                       alert("Error ->" + xmlhttp.responseText);
-              }
-        };
-    }
-    
-    getdetails();
-  </script>
-    
 
   
 </body></html>

@@ -1,4 +1,4 @@
-# Vapor Messenger Web to landline bulk messaging app
+# VCardia Web to landline bulk messaging app client
 
 
 
