@@ -1,4 +1,4 @@
-# VCardia Web to landline bulk messaging app client
+# Cardia Web to landline bulk messaging app client
 
 
 
