@@ -12,7 +12,6 @@ import com.app.model.Contact;
 import com.app.model.ContactGroup;
 import com.app.service.ContactGroupService;
 import com.app.service.ContactService;
-import com.app.service.MailService;
 
 @Controller
 public class MainWebController {
